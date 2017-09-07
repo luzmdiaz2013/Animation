@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet">
+
+	<title></title>
+
+<style type="text/css">
+*{
+    margin: 0;
+}
+	/*-------------------------------- This is the background image ---------------------------------*/
+
+body{
+	overflow: hidden;
+
+}
+
+#container{
+			background-image: url(images/nightSky.jpeg);
+	    	background-size: cover;
+	    	position: relative;
+	    	height:900px;
+	    	width: 100vw;
+
+}
+
+/*------------------------------------- These are the divs -------------------------------------------*/
+
+#moon{
+position: absolute;
+background-image: url(images/moon.png);
+height: 122px;
+width:120px;
+left:-200px;
+}
+
+#star{
+position: absolute;
+background-image: url(images/star2.png);
+height: 100px;
+width:100px;
+margin-left: 600px;
+margin-bottom: 20px;
+}
+
+#cloud{
+position: absolute;
+background-image: url(images/clouds2.png);
+background-repeat: no-repeat;
+height: 180px;
+width:400px;
+margin-left: 1500px;
+margin-top: 300px;
+}
+
+#moonlight{
+	position: absolute;
+	height: 125px;
+	width: 400px;
+	right: -125px;
+	color: #9aa9ca;
+	font-size: 50px;
+	text-align: center;
+	margin-top: 900px;
+	margin-right: 70px;
+	font-family: 'Tangerine', cursive;
+	text-shadow:  0 0 10px white, 
+                  0 0 20px white, 
+                  0 0 30px white, 
+                  0 0 40px white, 
+                  0 0 50px white, 
+                  0 0 60px white,
+                  0 0 70px white;
+	
+}
+
+#firefly{
+	height:10px;
+	width: 10px;
+	border-radius: 25px;
+
+}
+
+.button{
+height: 50px;
+width: 110px;
+font-size: 30px;
+font-family: 'Tangerine', cursive;
+font-weight:bold;
+color: /*#103647*/#1f546d;
+border-radius:15px; 
+margin-top: 710px;
+background-image: url(images/bright.jpg);
+background-size: cover;
+padding: 5px;
+margin-left: 5px;
+text-shadow:  	  0 0 10px white, 
+                  0 0 20px white, 
+                  0 0 30px white, 
+                  0 0 40px white, 
+                  0 0 50px white, 
+                  0 0 60px white,
+                  0 0 70px white;
+}
+
+
+	</style>
+
+
+
+</head>
+
+
+<!-- <body onload="Moon(), Cloud(), Moonlight(), playAudio(), Star()"> -->
+
+<!--*********************************** This is the parent div ********************************** -->
+
+		<div id="container">
+
+	<!--  ************************** These are the children divs **************************-->
+			
+					<div id="moon"></div>
+
+					<div id="cloud"></div>
+
+					<div id="star"></div>
+
+					<div id="moonlight">
+						<h1>Starry Night</h1>
+<!-- *********************** This is the audio for Beethoven's Moonlight Sonata ********************** -->
+							<audio id="MoonlightSonata" src="sounds/MoonlightSonata.mp3">
+							</audio>
+
+					</div>
+
+					<!-- <div id="firefly"></div> -->
+
+					
+					<br>
+					<br>
+					<br>
+
+<!-- ****************************** These buttons correspond to the divs *********************************-->
+
+					<center>
+
+					<button class="button" onclick="Moon()" >Moon</button> 
+
+					<button class="button" onclick="Star()">Star</button>
+
+					<button class="button" onclick="Cloud()">Cloud</button>
+
+					<button class="button" id="MoonlightSonata"  type="audio" onclick="Moonlight(), playAudio()">Moonlight</button>
+
+					</center>
+
+		</div>
+		<script type="text/javascript">
+
+					function Moon() {
+				       var C = document.getElementById("moon");
+				       var pos = -200;
+				       var id = setInterval(frame, 10);
+				       function frame () {
+				         if (pos == 775){   //length of the div diagonally//
+				               clearInterval(id); 
+				        }
+				         
+				            else {
+				               pos++;
+				               C.style.left = pos + '.2px';    //the px affects the rate not the angle
+				               C.style.bottom = pos + '.2px';
+				               
+				           }
+				       }
+
+				}
+
+					function Star() {
+				       var A = document.getElementById("star");
+				       var pos = 0;
+				       var id = setInterval(frame, 180);
+				       function frame () {
+				           if (pos == 155){
+				               clearInterval(id);
+
+				           } else {
+				               pos++;
+				               A.style.top = pos + 'px';
+				               
+				           }
+				       }
+
+				}
+
+				
+
+					function Cloud() {
+				       var B = document.getElementById("cloud");
+				       var pos = 10;
+				       var id = setInterval(frame, 25);
+				       function frame () {
+				           if (pos == 1000){
+				               clearInterval(id);
+
+				           } else {
+				               pos++;
+				               // B.style.left = pos + 'px';
+				               B.style.right = pos + 'px';
+				               
+				           }
+				       }
+
+				}
+
+				function Moonlight() {
+				       var D = document.getElementById("moonlight");
+				       var pos = -200;
+				       var id = setInterval(frame, 40);
+				       function frame () {
+				           if (pos == 440){   //length of the div diagonally//
+				               clearInterval(id);
+
+				           } else {
+				               pos++;
+				               D.style.right = pos + 'px';
+				               D.style.bottom = pos + 'px';
+				               
+				           }
+				       }
+				       
+
+				}
+
+
+				function playAudio(){
+						document.getElementById("MoonlightSonata").play();
+
+				     }
+
+
+	
+	</script>
+
+</body>
+
+
+</html>
